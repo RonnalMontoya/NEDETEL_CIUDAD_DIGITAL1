@@ -75,3 +75,9 @@ npm run build
 
 - El backend incluye endpoints de optimizacion de rendimiento (cache, DataLoader, cola de jobs y lazy-loading) en el modulo `performance`.
 - Si no se configura `REDIS_URL`, la cola funciona en modo local para pruebas.
+
+## Documentos de entrega
+
+- Informe tecnico del flujo completo: `INFORME_TECNICO.md`
+- Bibliografia: `BIBLIOGRAFIA.md`
+- Evidencias de ejecucion: `nedetel-backend/nedetel_api/nedetel-api/docs/evidencias/evidencias_20260308_184452.md`
