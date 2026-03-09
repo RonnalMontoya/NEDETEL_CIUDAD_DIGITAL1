@@ -1,0 +1,7 @@
+{
+  "name": "nedetel_ciudad_digital",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,100 @@
+<ion-header class="page-header-secondary">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        VOLVER
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <ion-icon name="clipboard"></ion-icon> Trabajos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content">
+  <div class="wrap">
+    <!-- CARD: REGISTRO -->
+    <ion-card class="page-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="add-circle"></ion-icon>
+          Registrar Trabajo
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item lines="none" class="field">
+          <ion-label position="stacked">Título del Trabajo</ion-label>
+          <ion-input [(ngModel)]="title" placeholder="Ej: Orden de trabajo #001"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="field">
+          <ion-label position="stacked">Descripción (opcional)</ion-label>
+          <ion-textarea
+            [(ngModel)]="description"
+            autoGrow="true"
+            placeholder="Ej: Reparación de enlace, revisión de rack, etc."
+          ></ion-textarea>
+        </ion-item>
+
+        <ion-item lines="none" class="field">
+          <ion-label position="stacked">Fecha / Hora</ion-label>
+          <ion-datetime [(ngModel)]="dateISO" presentation="date-time"></ion-datetime>
+        </ion-item>
+
+        <ion-button expand="block" class="btn-save" (click)="save()">
+          <ion-icon slot="start" name="save"></ion-icon>
+          Guardar Trabajo
+        </ion-button>
+
+        <div class="error-message" *ngIf="errorMsg">
+          <ion-icon name="alert-circle"></ion-icon>
+          <span>{{ errorMsg }}</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- HEADER: LISTADO -->
+    <div class="section-header">
+      <ion-icon name="list"></ion-icon>
+      <h2>Trabajos Registrados</h2>
+    </div>
+
+    <!-- LOADING -->
+    <div class="empty-state" *ngIf="isLoading">
+      <ion-icon name="hourglass"></ion-icon>
+      <p>Cargando trabajos...</p>
+    </div>
+
+    <!-- EMPTY -->
+    <div class="empty-state" *ngIf="!isLoading && items.length === 0">
+      <ion-icon name="document"></ion-icon>
+      <p>Aún no hay trabajos registrados.</p>
+    </div>
+
+    <!-- LIST -->
+    <div class="activities-list" *ngIf="!isLoading && items.length > 0">
+      <div class="activity-item" *ngFor="let it of items">
+        <div class="activity-title">{{ it.title }}</div>
+
+        <div class="activity-description" *ngIf="it.description">
+          {{ it.description }}
+        </div>
+
+        <div class="activity-meta">
+          <span>
+            <ion-icon name="calendar"></ion-icon>
+            {{ it.dateISO | date:'short' }}
+          </span>
+
+          <ion-button fill="clear" size="small" color="danger" (click)="remove(it.id)">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            Eliminar
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

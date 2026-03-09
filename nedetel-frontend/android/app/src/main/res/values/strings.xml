@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">NEDETEL Ciudad Digital</string>
+    <string name="title_activity_main">NEDETEL Ciudad Digital</string>
+    <string name="package_name">com.nedetel.ciudaddigital</string>
+    <string name="custom_url_scheme">com.nedetel.ciudaddigital</string>
+</resources>

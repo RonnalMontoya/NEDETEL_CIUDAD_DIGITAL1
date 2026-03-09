@@ -1,0 +1,412 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Estilos globales personalizados para NEDETEL Data Center Control
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Import page shared styles */
+@import "app/pages/pages-shared.scss";
+
+/* Optional CSS utils */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* Dark Mode Support */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+/* =====================================================
+   TEMA PERSONALIZADO - NEDETEL DATA CENTER
+   ===================================================== */
+
+/* Colores principales */
+:root {
+  --ion-color-primary: #667eea;
+  --ion-color-primary-rgb: 102, 126, 234;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #5568d3;
+  --ion-color-primary-tint: #7589ed;
+
+  --ion-color-secondary: #764ba2;
+  --ion-color-secondary-rgb: 118, 75, 162;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #68428e;
+  --ion-color-secondary-tint: #8459ac;
+
+  --ion-color-tertiary: #00bcd4;
+  --ion-color-tertiary-rgb: 0, 188, 212;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #00acc1;
+  --ion-color-tertiary-tint: #1ac5d6;
+
+  --ion-color-success: #2dd36f;
+  --ion-color-success-rgb: 45, 211, 111;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #28ba62;
+  --ion-color-success-tint: #42d77d;
+
+  --ion-color-warning: #ffc409;
+  --ion-color-warning-rgb: 255, 196, 9;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0ac08;
+  --ion-color-warning-tint: #ffca22;
+
+  --ion-color-danger: #eb445c;
+  --ion-color-danger-rgb: 235, 68, 92;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #cf3c4f;
+  --ion-color-danger-tint: #ed576b;
+
+  --ion-color-dark: #1a1a2e;
+  --ion-color-dark-rgb: 26, 26, 46;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #16213e;
+  --ion-color-dark-tint: #37374d;
+
+  --ion-color-medium: #92949c;
+  --ion-color-medium-rgb: 146, 148, 156;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #808289;
+  --ion-color-medium-tint: #9d9fa6;
+
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 245, 248;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+}
+
+/* Fuentes */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+body.native-lite,
+body.native-lite ion-app,
+body.native-lite ion-content {
+  background: #f5f7fa !important;
+  --background: #f5f7fa !important;
+  --ion-background-color: #f5f7fa !important;
+  --ion-text-color: #16213e !important;
+  --ion-item-background: #ffffff !important;
+  --ion-toolbar-background: #16213e !important;
+  color: #16213e !important;
+}
+
+body.native-lite *,
+body.native-lite *::before,
+body.native-lite *::after {
+  animation: none !important;
+  transition: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  text-shadow: none !important;
+  background-image: none !important;
+  transform: none !important;
+}
+
+body.native-lite .bg {
+  display: none !important;
+}
+
+body.native-lite ion-header,
+body.native-lite ion-toolbar {
+  --background: #16213e !important;
+  --border-color: transparent !important;
+}
+
+/* Headers personalizados */
+ion-header {
+  --background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --border-color: transparent;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Toolbar */
+ion-toolbar {
+  --background: transparent;
+  --border-color: transparent;
+
+  &[color="dark"] {
+    --background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  }
+
+  &[color="primary"] {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+}
+
+/* Títulos */
+ion-title {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Buttons */
+ion-button {
+  --border-radius: 8px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+
+  &[color="primary"] {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --background-hover: linear-gradient(135deg, #5568d3 0%, #68428e 100%);
+  }
+
+  &[color="secondary"] {
+    --background: #764ba2;
+    --background-hover: #68428e;
+  }
+
+  &[color="tertiary"] {
+    --background: #00bcd4;
+    --background-hover: #00acc1;
+  }
+
+  &[color="success"] {
+    --background: #2dd36f;
+    --background-hover: #28ba62;
+  }
+
+  &[color="warning"] {
+    --background: #ffc409;
+    --background-hover: #e0ac08;
+    --color: #000;
+  }
+
+  &[color="danger"] {
+    --background: #eb445c;
+    --background-hover: #cf3c4f;
+  }
+}
+
+/* Cards mejoradas */
+ion-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --background: #ffffff;
+  transition: all 0.3s ease;
+
+  &:active {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  ion-card-header {
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+
+    ion-card-title {
+      color: #1a1a2e;
+      font-weight: 600;
+      font-size: 18px;
+      text-transform: none;
+    }
+
+    ion-card-subtitle {
+      color: #666;
+      font-size: 13px;
+    }
+  }
+
+  ion-card-content {
+    padding-top: 16px;
+    color: #333;
+    line-height: 1.6;
+  }
+}
+
+/* Inputs y Textareas */
+ion-input,
+ion-textarea,
+ion-select {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --highlight-color: #667eea;
+
+  --background: #f8f9fa;
+  border-radius: 8px;
+  margin: 8px 0;
+}
+
+ion-input:focus,
+ion-textarea:focus,
+ion-select:focus {
+  --background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Items de lista */
+ion-item {
+  --background: transparent;
+  --border-color: #e9ecef;
+  --padding-start: 16px;
+  --padding-end: 16px;
+
+  ion-icon {
+    margin-right: 12px;
+    color: #667eea;
+  }
+}
+
+ion-item-group {
+  ion-item-divider {
+    --background: linear-gradient(90deg, #667eea15 0%, transparent 100%);
+    border: none;
+    color: #666;
+    font-weight: 600;
+    padding-left: 16px;
+  }
+}
+
+/* Chips/Tags */
+ion-chip {
+  border-radius: 20px;
+  --background: #e9ecef;
+  --color: #333;
+
+  &[color="primary"] {
+    --background: #667eea15;
+    --color: #667eea;
+  }
+
+  &[color="success"] {
+    --background: #2dd36f15;
+    --color: #2dd36f;
+  }
+
+  &[color="warning"] {
+    --background: #ffc40915;
+    --color: #ffc409;
+  }
+
+  &[color="danger"] {
+    --background: #eb445c15;
+    --color: #eb445c;
+  }
+}
+
+/* Separadores */
+ion-separator {
+  --background: linear-gradient(90deg, transparent 0%, #ddd 50%, transparent 100%);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 4px;
+
+  &:hover {
+    background: #5568d3;
+  }
+}
+
+/* Animaciones generales */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Clases de utilidad */
+.text-primary {
+  color: #667eea;
+}
+
+.text-secondary {
+  color: #764ba2;
+}
+
+.text-success {
+  color: #2dd36f;
+}
+
+.text-danger {
+  color: #eb445c;
+}
+
+.text-warning {
+  color: #ffc409;
+}
+
+.text-muted {
+  color: #999;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.badge-primary {
+    background: #667eea;
+    color: white;
+  }
+
+  &.badge-success {
+    background: #2dd36f;
+    color: white;
+  }
+
+  &.badge-warning {
+    background: #ffc409;
+    color: #000;
+  }
+
+  &.badge-danger {
+    background: #eb445c;
+    color: white;
+  }
+}

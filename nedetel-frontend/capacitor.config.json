@@ -1,0 +1,10 @@
+{
+  "appId": "com.nedetel.ciudaddigital",
+  "appName": "NEDETEL Ciudad Digital",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "http",
+    "cleartext": true
+  }
+}

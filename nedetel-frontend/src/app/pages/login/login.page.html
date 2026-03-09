@@ -1,0 +1,155 @@
+<ng-container *ngIf="nativeLite; else webFancyLogin">
+  <ion-header class="native-header">
+    <ion-toolbar color="dark">
+      <ion-title>NEDETEL Ciudad Digital</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding native-login-content">
+    <div class="native-login-wrap">
+      <h2>Iniciar sesión</h2>
+      <p>Ingresa con tu usuario o correo para continuar.</p>
+
+      <ion-list lines="none">
+      <ion-item>
+        <ion-label position="stacked">Usuario o correo</ion-label>
+        <ion-input
+          [(ngModel)]="identifier"
+          type="text"
+          placeholder="Usuario o correo">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input
+          [(ngModel)]="password"
+          type="password"
+          placeholder="Contraseña">
+        </ion-input>
+      </ion-item>
+      </ion-list>
+
+      <ion-button expand="block" color="primary" (click)="onLogin()">
+        Ingresar
+      </ion-button>
+
+      <ion-text color="danger" *ngIf="errorMsg">
+        <p>{{ errorMsg }}</p>
+      </ion-text>
+
+      <ion-button expand="block" fill="outline" color="secondary" (click)="goRegister()">
+        Registrarse
+      </ion-button>
+    </div>
+  </ion-content>
+</ng-container>
+
+<ng-template #webFancyLogin>
+  <ion-header class="login-header">
+    <ion-toolbar color="dark">
+      <ion-title class="header-title">
+        <ion-icon name="lock-closed"></ion-icon> Data Center UFINET-NEDETEL CIUDAD DIGITAL
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="login-content">
+    <div class="background-decoration">
+      <div class="decoration-blob decoration-blob-1"></div>
+      <div class="decoration-blob decoration-blob-2"></div>
+    </div>
+
+    <div class="login-container">
+      <div class="login-banner">
+        <div class="banner-icon">
+          <ion-icon name="server"></ion-icon>
+        </div>
+        <h1 class="banner-title">Bienvenido</h1>
+        <p class="banner-subtitle">Sistema de Control de Data Center</p>
+      </div>
+
+      <ion-card class="login-card">
+        <ion-card-header>
+          <div class="brand-section">
+            <ion-img
+              class="brand-logo"
+              src="assets/imagen/UFINET-NEDETEL.png"
+              alt="UFINET - NEDETEL">
+            </ion-img>
+          </div>
+          <ion-card-title class="card-title">
+            Intranet Operativa Integral – Data Center
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content class="card-content">
+          <div class="form-group">
+            <ion-item lines="none" class="input-item">
+              <ion-icon slot="start" name="person" color="primary"></ion-icon>
+              <ion-input
+                [(ngModel)]="identifier"
+                type="text"
+                placeholder="Ingresa tu usuario o correo"
+                class="custom-input">
+              </ion-input>
+            </ion-item>
+          </div>
+
+          <div class="form-group">
+            <ion-item lines="none" class="input-item">
+              <ion-icon slot="start" name="key" color="primary"></ion-icon>
+              <ion-input
+                [(ngModel)]="password"
+                type="password"
+                placeholder="Ingresa tu contraseña"
+                class="custom-input">
+              </ion-input>
+            </ion-item>
+          </div>
+
+          <ion-button
+            expand="block"
+            color="primary"
+            class="btn-login"
+            (click)="onLogin()">
+            <ion-icon slot="start" name="log-in"></ion-icon>
+            INGRESAR
+          </ion-button>
+
+          <div class="error-message" *ngIf="errorMsg">
+            <ion-icon name="alert-circle"></ion-icon>
+            <span>{{ errorMsg }}</span>
+          </div>
+
+          <div class="divider">
+            <span>¿Nuevo usuario?</span>
+          </div>
+
+          <div class="register-section">
+            <p class="register-text">
+              No tienes cuenta aún
+            </p>
+            <ion-button
+              expand="block"
+              fill="outline"
+              color="secondary"
+              class="btn-register"
+              (click)="goRegister()">
+              <ion-icon slot="start" name="person-add"></ion-icon>
+              REGISTRARSE
+            </ion-button>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+
+      <div class="login-footer">
+        <p class="footer-text">
+          <ion-icon name="information-circle" color="primary"></ion-icon>
+          Plataforma segura - Datos encriptados
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ng-template>

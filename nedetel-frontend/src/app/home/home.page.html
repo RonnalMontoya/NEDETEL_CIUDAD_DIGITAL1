@@ -1,0 +1,118 @@
+<ion-header [translucent]="true" class="header-principal">
+  <ion-toolbar color="dark">
+    <ion-title class="title-header">
+      <ion-icon name="cellular-outline"></ion-icon>
+      Telecomunicaciones
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content-principal">
+  <div class="banner-section">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1 class="banner-title">Control Integral de Data Center</h1>
+      <h1 class="banner-title">"UFINET-NEDETEL CIUDAD DIGITAL"</h1>
+      <p class="banner-subtitle">Gestión eficiente de telecomunicaciones y servicios críticos</p>
+    </div>
+  </div>
+
+  <ion-card class="modules-card">
+    <ion-card-header>
+      <ion-card-title>Módulos del sistema</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="modules-grid">
+        <ion-button class="module-btn" expand="block" color="primary" routerLink="/equipos">Equipos</ion-button>
+        <ion-button class="module-btn" expand="block" color="warning" routerLink="/mantenimiento">Mantenimiento</ion-button>
+        <ion-button class="module-btn" expand="block" color="secondary" routerLink="/trabajos">Trabajos</ion-button>
+        <ion-button class="module-btn" expand="block" color="success" routerLink="/reportes">Reportes</ion-button>
+        <ion-button class="module-btn" expand="block" color="tertiary" routerLink="/visitas">Visitas</ion-button>
+        <ion-button class="module-btn" expand="block" color="medium" routerLink="/limpieza">Limpieza</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-segment [(ngModel)]="tab" class="home-segment">
+    <ion-segment-button value="recientes">
+      <ion-label>Recientes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="proximos">
+      <ion-label>Próximos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="noticias">
+      <ion-label>Noticias</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="hint" *ngIf="loading">
+    <ion-spinner name="crescent"></ion-spinner>
+    <span>Cargando datos de telecomunicaciones...</span>
+  </div>
+
+  <div class="error" *ngIf="errorMsg">
+    <ion-icon name="warning-outline"></ion-icon>
+    <span>{{ errorMsg }}</span>
+  </div>
+
+  <ion-list *ngIf="tab === 'recientes' && !loading">
+    <ion-item class="telecom-item" *ngFor="let item of recientes" [href]="item.url || null" target="_blank" rel="noopener">
+      <ion-thumbnail class="telecom-thumb" slot="start">
+        <img class="telecom-thumb-img" [src]="getImageSrc(item.imageUrl)" [attr.data-fallback-index]="0" (error)="onImageError($event)" alt="Imagen de evento de telecomunicaciones" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.subtitle }}</p>
+        <p>{{ item.date | date:'medium' }}</p>
+      </ion-label>
+      <ion-icon name="open-outline" slot="end" *ngIf="item.url"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf="recientes.length === 0">
+      <ion-label>No hay eventos recientes disponibles.</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="tab === 'proximos' && !loading">
+    <ion-item class="telecom-item" *ngFor="let item of proximos" [href]="item.url || null" target="_blank" rel="noopener">
+      <ion-thumbnail class="telecom-thumb" slot="start">
+        <img class="telecom-thumb-img" [src]="getImageSrc(item.imageUrl)" [attr.data-fallback-index]="0" (error)="onImageError($event)" alt="Imagen de próximo evento de telecomunicaciones" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.subtitle }}</p>
+        <p>{{ item.date | date:'medium' }}</p>
+      </ion-label>
+      <ion-icon name="open-outline" slot="end" *ngIf="item.url"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf="proximos.length === 0">
+      <ion-label>No hay próximos eventos disponibles.</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="tab === 'noticias' && !loadingNoticias">
+    <ion-item class="telecom-item" *ngFor="let news of noticias" [href]="news.url" target="_blank" rel="noopener">
+      <ion-thumbnail class="telecom-thumb" slot="start">
+        <img class="telecom-thumb-img" [src]="getImageSrc(news.imageUrl)" [attr.data-fallback-index]="0" (error)="onImageError($event)" alt="Imagen de noticia de telecomunicaciones" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.source }}</p>
+        <p>{{ news.date | date:'medium' }}</p>
+      </ion-label>
+      <ion-icon name="newspaper-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf="noticias.length === 0">
+      <ion-label>No hay noticias de telecomunicaciones disponibles por ahora.</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="hint" *ngIf="tab === 'noticias' && loadingNoticias">
+    <ion-spinner name="crescent"></ion-spinner>
+    <span>Cargando noticias...</span>
+  </div>
+</ion-content>

@@ -1,0 +1,107 @@
+<ion-header class="page-header-medium">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        VOLVER
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <ion-icon name="water"></ion-icon> LIMPIEZA
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content">
+  <div class="wrap">
+    <!-- CARD: REGISTRO -->
+    <ion-card class="page-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="add-circle"></ion-icon>
+          Registrar Limpieza
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item lines="none" class="field">
+          <ion-label position="stacked">Actividad</ion-label>
+          <ion-input
+            [(ngModel)]="title"
+            placeholder="Ej: Limpieza de sala técnica principal"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="field">
+          <ion-label position="stacked">Detalles (opcional)</ion-label>
+          <ion-textarea
+            [(ngModel)]="description"
+            autoGrow="true"
+            placeholder="Ej: Áreas limpias, materiales utilizados, responsable..."
+          ></ion-textarea>
+        </ion-item>
+
+        <ion-item lines="none" class="field">
+          <ion-label position="stacked">Fecha / Hora</ion-label>
+          <ion-datetime
+            [(ngModel)]="dateISO"
+            presentation="date-time"
+          ></ion-datetime>
+        </ion-item>
+
+        <ion-button expand="block" class="btn-save" (click)="save()">
+          <ion-icon slot="start" name="save"></ion-icon>
+          Guardar Limpieza
+        </ion-button>
+
+        <div class="error-message" *ngIf="errorMsg">
+          <ion-icon name="alert-circle"></ion-icon>
+          {{ errorMsg }}
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- HEADER: LISTADO -->
+    <div class="section-header">
+      <ion-icon name="list"></ion-icon>
+      <h2>Limpiezas Registradas</h2>
+    </div>
+
+    <!-- LOADING -->
+    <div class="empty-state" *ngIf="isLoading">
+      <ion-spinner></ion-spinner>
+      <p>Cargando registros...</p>
+    </div>
+
+    <!-- EMPTY -->
+    <div class="empty-state" *ngIf="!isLoading && items.length === 0">
+      <ion-icon name="water"></ion-icon>
+      <p>No hay registros de limpieza aún</p>
+    </div>
+
+    <!-- LIST -->
+    <div class="activities-list" *ngIf="!isLoading && items.length > 0">
+      <div class="activity-item" *ngFor="let it of items">
+        <div class="activity-content">
+          <div class="activity-title">{{ it.title }}</div>
+
+          <div class="activity-meta">
+            <span class="meta-item">
+              <ion-icon name="calendar"></ion-icon>
+              {{ it.dateISO | date:'dd/MM/yyyy HH:mm' }}
+            </span>
+          </div>
+
+          <div class="activity-description" *ngIf="it.description">
+            {{ it.description }}
+          </div>
+        </div>
+
+        <ion-button fill="clear" color="danger" size="small" (click)="remove(it.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,114 @@
+.page-wrap {
+  min-height: calc(100vh - 56px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  background: #f6f7fb;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+.card-header-center {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.card-header-center ion-card-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+.brand-inside {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.brand-logo {
+  width: 170px;
+  max-width: 85%;
+  height: auto;
+}
+
+/* Animación suave */
+.logo-animate {
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  animation: logoIn 450ms ease-out forwards;
+}
+
+@keyframes logoIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-animate {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.field {
+  margin-bottom: 14px;
+}
+
+.field-error,
+.field-help {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: -6px 4px 10px;
+  font-size: 0.85rem;
+}
+
+.field-error {
+  color: #b00020;
+  font-weight: 600;
+}
+
+.field-help {
+  color: #2f4b7c;
+  font-weight: 500;
+}
+
+.btn-primary {
+  margin-top: 16px;
+  height: 48px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  --background: #0a4fd7;
+  --box-shadow: 0 10px 22px rgba(10, 79, 215, 0.28);
+}
+
+.links {
+  margin-top: 14px;
+  text-align: center;
+
+  a {
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+    color: #0a4fd7;
+  }
+}
+
+.error {
+  margin-top: 12px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #b00020;
+}

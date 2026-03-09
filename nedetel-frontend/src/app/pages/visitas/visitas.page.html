@@ -1,0 +1,107 @@
+<ion-header class="page-header-tertiary">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        VOLVER
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <ion-icon name="calendar"></ion-icon> VISITAS
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content">
+  <div class="wrap">
+    <!-- CARD: REGISTRO -->
+    <ion-card class="page-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="add-circle"></ion-icon>
+          Registrar Visita
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item lines="none" class="field">
+          <ion-label position="stacked">Descripción</ion-label>
+          <ion-input
+            [(ngModel)]="title"
+            placeholder="Ej: Visita de clientes o proveedores"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="field">
+          <ion-label position="stacked">Detalles (opcional)</ion-label>
+          <ion-textarea
+            [(ngModel)]="description"
+            autoGrow="true"
+            placeholder="Ej: Empresa visitante, persona de contacto, motivo de visita..."
+          ></ion-textarea>
+        </ion-item>
+
+        <ion-item lines="none" class="field">
+          <ion-label position="stacked">Fecha y Hora</ion-label>
+          <ion-datetime
+            [(ngModel)]="dateISO"
+            presentation="date-time"
+          ></ion-datetime>
+        </ion-item>
+
+        <ion-button expand="block" class="btn-save" (click)="save()">
+          <ion-icon slot="start" name="save"></ion-icon>
+          Guardar Visita
+        </ion-button>
+
+        <div class="error-message" *ngIf="errorMsg">
+          <ion-icon name="alert-circle"></ion-icon>
+          {{ errorMsg }}
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- HEADER: LISTADO -->
+    <div class="section-header">
+      <ion-icon name="list"></ion-icon>
+      <h2>Visitas Registradas</h2>
+    </div>
+
+    <!-- LOADING -->
+    <div class="empty-state" *ngIf="isLoading">
+      <ion-spinner></ion-spinner>
+      <p>Cargando visitas...</p>
+    </div>
+
+    <!-- EMPTY -->
+    <div class="empty-state" *ngIf="!isLoading && items.length === 0">
+      <ion-icon name="calendar"></ion-icon>
+      <p>No hay visitas registradas aún</p>
+    </div>
+
+    <!-- LIST -->
+    <div class="activities-list" *ngIf="!isLoading && items.length > 0">
+      <ion-card class="card" *ngFor="let it of items">
+        <ion-card-content>
+          <div class="row">
+            <div>
+              <div class="item-title">{{ it.title }}</div>
+              <div class="item-meta">
+                <ion-icon name="calendar"></ion-icon>
+                {{ it.dateISO | date:'medium' }}
+              </div>
+              <div class="item-desc" *ngIf="it.description">
+                {{ it.description }}
+              </div>
+            </div>
+
+            <ion-button fill="clear" color="danger" (click)="remove(it.id)">
+              Eliminar
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

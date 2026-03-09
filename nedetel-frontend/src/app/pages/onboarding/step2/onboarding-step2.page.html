@@ -1,0 +1,47 @@
+<ion-content fullscreen class="ob">
+  <div class="bg"></div>
+
+  <div class="container">
+    <div class="topbar">
+      <div class="badge">Onboarding</div>
+    </div>
+
+    <div class="progress">
+      <span class="dot active"></span>
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="step">2/4</span>
+    </div>
+
+    <div class="card">
+      <div class="iconWrap">
+        <ion-icon name="clipboard-outline"></ion-icon>
+      </div>
+
+      <h1><span>Visitas</span> y control</h1>
+      <p>
+        Registra ingresos, datos clave y seguimiento en tiempo real para mantener
+        trazabilidad operativa.
+      </p>
+
+      <div class="highlights">
+        <div class="pill">✔ Registro rápido</div>
+        <div class="pill">✔ Historial</div>
+        <div class="pill">✔ Seguimiento</div>
+      </div>
+    </div>
+
+    <div class="actions row">
+      <button class="btn secondary" (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Atrás
+      </button>
+
+      <button class="btn primary" (click)="next()">
+        Siguiente
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-content fullscreen class="ob">
+  <div class="bg"></div>
+
+  <div class="container">
+    <div class="topbar">
+      <div class="badge">Onboarding</div>
+      <!-- En el último paso normalmente no hace falta "Saltar", pero lo puedes dejar si quieres -->
+      <button class="link" (click)="finish()">Finalizar</button>
+    </div>
+
+    <div class="progress">
+      <span class="dot active"></span>
+      <span class="dot active"></span>
+      <span class="dot active"></span>
+      <span class="dot active"></span>
+      <span class="step">4/4</span>
+    </div>
+
+    <div class="card">
+      <div class="iconWrap">
+        <ion-icon name="log-in-outline"></ion-icon>
+      </div>
+
+      <h1><span>Acceso</span> a tu cuenta</h1>
+      <p>
+        Todo listo para empezar. Crea tu cuenta y luego inicia sesión
+        para acceder al panel principal de NEDETEL Ciudad Digital.
+      </p>
+
+      <div class="highlights">
+        <div class="pill">✔ Registro guiado</div>
+        <div class="pill">✔ Inicio de sesión</div>
+        <div class="pill">✔ Acceso seguro</div>
+      </div>
+    </div>
+
+    <div class="actions row">
+      <button class="btn secondary" (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Atrás
+      </button>
+
+      <button class="btn primary" (click)="finish()">
+        Empezar
+        <ion-icon name="rocket-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ion-content>

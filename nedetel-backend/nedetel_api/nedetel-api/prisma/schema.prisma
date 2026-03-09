@@ -1,0 +1,101 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Rol {
+  ADMIN
+  OPERADOR
+  OPERACIONES
+  TECNICO
+  SEGURIDAD
+  USER
+}
+
+enum JobStatus {
+  QUEUED
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique   
+  password  String
+  nombre    String
+  role      String
+  createdAt DateTime @default(now())
+}
+
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  username  String   @unique
+  email     String   @unique
+  password  String
+  rol       Rol      @default(USER)
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  createdAt   DateTime  @default(now())
+  products    Product[]
+}
+
+model Product {
+  id         Int         @id @default(autoincrement())
+  name       String
+  sku        String      @unique
+  price      Decimal     @db.Decimal(10, 2)
+  isActive   Boolean     @default(true)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  categoryId Int
+  category   Category    @relation(fields: [categoryId], references: [id])
+  orderItems OrderItem[]
+
+  @@index([categoryId])
+  @@index([isActive])
+}
+
+model Order {
+  id           Int         @id @default(autoincrement())
+  customerName String
+  status       String
+  createdAt    DateTime    @default(now())
+  orderItems   OrderItem[]
+
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id        Int      @id @default(autoincrement())
+  quantity  Int
+  unitPrice Decimal  @db.Decimal(10, 2)
+  orderId   Int
+  productId Int
+  order     Order    @relation(fields: [orderId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+model ReportJob {
+  id        String    @id @default(uuid())
+  type      String
+  status    JobStatus @default(QUEUED)
+  payload   Json?
+  result    Json?
+  error     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}

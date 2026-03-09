@@ -1,0 +1,47 @@
+<ion-content fullscreen class="ob">
+  <div class="bg"></div>
+
+  <div class="container">
+    <div class="topbar">
+      <div class="badge">Onboarding</div>
+    </div>
+
+    <div class="progress">
+      <span class="dot active"></span>
+      <span class="dot active"></span>
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="step">3/4</span>
+    </div>
+
+    <div class="card">
+      <div class="iconWrap">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </div>
+
+      <h1><span>Permisos</span> y notificaciones</h1>
+      <p>
+        Te explicamos qué permisos solicita la app y para qué se usan.
+        Solo pedimos lo necesario para operar de forma segura y trazable.
+      </p>
+
+      <div class="highlights">
+        <div class="pill">✔ Cámara</div>
+        <div class="pill">✔ Notificaciones</div>
+        <div class="pill">✔ Ubicación (si aplica)</div>
+      </div>
+    </div>
+
+    <div class="actions row">
+      <button class="btn secondary" (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Atrás
+      </button>
+
+      <button class="btn primary" (click)="next()">
+        Siguiente
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ion-content>

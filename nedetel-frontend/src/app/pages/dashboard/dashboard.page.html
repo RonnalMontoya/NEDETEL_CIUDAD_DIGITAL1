@@ -1,0 +1,123 @@
+<ion-header [translucent]="true" class="header-principal">
+  <ion-toolbar color="dark">
+    <ion-title class="title-header">
+      <ion-icon name="server"></ion-icon> Data Center UFINET-NEDETEL CIUDAD DIGITAL
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()" color="light">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+        SALIR
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content-principal">
+  <!-- Banner Principal -->
+  <div class="banner-section">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1 class="banner-title">Control Integral de Data Center</h1>
+      <h1 class="banner-title">"UFINET-NEDETEL CIUDAD DIGITAL"</h1>
+      <p class="banner-subtitle">Gestión eficiente de tareas</p>
+    </div>
+  </div>
+
+  <!-- Estadísticas Rápidas -->
+  <ion-card class="stats-card">
+    <ion-card-header>
+      <ion-card-title>Resumen Rápido</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <ion-icon name="server" color="primary"></ion-icon>
+          <p class="stat-number">24</p>
+          <p class="stat-label">Equipos</p>
+        </div>
+        <div class="stat-item">
+          <ion-icon name="wrench" color="warning"></ion-icon>
+          <p class="stat-number">8</p>
+          <p class="stat-label">Mantenimientos</p>
+        </div>
+        <div class="stat-item">
+          <ion-icon name="clipboard" color="danger"></ion-icon>
+          <p class="stat-number">12</p>
+          <p class="stat-label">Trabajos Pendientes</p>
+        </div>
+        <div class="stat-item">
+          <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          <p class="stat-number">156</p>
+          <p class="stat-label">Tareas Completadas</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Módulos Principales -->
+  <ion-card class="modules-card">
+    <ion-card-header>
+      <ion-card-title>Módulos del Sistema</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="modules-grid">
+        <ion-button class="module-btn" expand="block" color="dark" (click)="go('/telecomunicaciones')">
+          <ion-icon slot="start" name="cellular-outline"></ion-icon>
+          Telecomunicaciones
+        </ion-button>
+
+        <!-- Módulo Equipos -->
+        <ion-button class="module-btn" expand="block" color="primary" (click)="go('/equipos')">
+          <ion-icon slot="start" name="server"></ion-icon>
+          Equipos
+        </ion-button>
+
+        <!-- Módulo Mantenimiento -->
+        <ion-button class="module-btn" expand="block" color="warning" (click)="go('/mantenimiento')">
+          <ion-icon slot="start" name="hammer"></ion-icon>
+          Mantenimiento
+        </ion-button>
+
+        <!-- Módulo Trabajos -->
+        <ion-button class="module-btn" expand="block" color="secondary" (click)="go('/trabajos')">
+          <ion-icon slot="start" name="clipboard"></ion-icon>
+          Trabajos
+        </ion-button>
+
+        <!-- Módulo Reportes -->
+        <ion-button class="module-btn" expand="block" color="success" (click)="go('/reportes')">
+          <ion-icon slot="start" name="bar-chart"></ion-icon>
+          Reportes
+        </ion-button>
+
+        <!-- Módulo Visitas -->
+        <ion-button class="module-btn" expand="block" color="tertiary" (click)="go('/visitas')">
+          <ion-icon slot="start" name="calendar"></ion-icon>
+          Visitas
+        </ion-button>
+
+        <!-- Módulo Limpieza -->
+        <ion-button class="module-btn" expand="block" color="medium" (click)="go('/limpieza')">
+          <ion-icon slot="start" name="water"></ion-icon>
+          Limpieza
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Información del Sistema -->
+  <ion-card class="info-card">
+    <ion-card-header>
+      <ion-card-title>Acerca del Sistema</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        <ion-icon name="information-circle" color="primary"></ion-icon>
+        Plataforma integral para la gestión y control de infraestructura de Data Center UFINET-NEDETEL CIUDAD DIGITAL.
+        Monitorea equipos, planifica mantenimiento y registra todas las actividades operativas.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="footer-spacer"></div>
+</ion-content>

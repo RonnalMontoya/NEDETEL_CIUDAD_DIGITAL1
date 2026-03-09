@@ -1,0 +1,160 @@
+<ion-header class="login-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="backToLogin()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        VOLVER
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-icon name="person-add"></ion-icon> REGISTRO
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content">
+  <div class="background-decoration"></div>
+  
+  <div class="page-wrap">
+    <div class="banner-section register-banner">
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <ion-icon name="person-add" class="banner-icon"></ion-icon>
+        <h1>Crear Nueva Cuenta</h1>
+        <p>Únete al sistema de gestión NEDETEL</p>
+      </div>
+    </div>
+
+    <ion-card class="login-card register-card">
+      <ion-card-header>
+        <ion-card-title>Información de la Cuenta</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none" class="field">
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label position="stacked">Nombres y Apellidos</ion-label>
+          <ion-input
+            #nombresInput
+            [(ngModel)]="nombres"
+            (ngModelChange)="onFieldChange('nombres')"
+            placeholder="Ej: Juan Carlos García"
+            inputmode="text"
+            autocomplete="name"
+            enterkeyhint="next"
+          ></ion-input>
+        </ion-item>
+        <div class="field-error" *ngIf="fieldErrors.nombres" role="alert" aria-live="polite">
+          <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+          <span>{{ fieldErrors.nombres }}</span>
+        </div>
+
+        <ion-item lines="none" class="field">
+          <ion-icon name="at" slot="start"></ion-icon>
+          <ion-label position="stacked">Usuario</ion-label>
+          <ion-input
+            #usuarioInput
+            [(ngModel)]="usuario"
+            (ngModelChange)="onFieldChange('usuario')"
+            placeholder="Ej: jgarcia"
+            inputmode="text"
+            autocomplete="username"
+            autocapitalize="off"
+            enterkeyhint="next"
+          ></ion-input>
+        </ion-item>
+        <div class="field-error" *ngIf="fieldErrors.usuario" role="alert" aria-live="polite">
+          <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+          <span>{{ fieldErrors.usuario }}</span>
+        </div>
+
+        <ion-item lines="none" class="field">
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-label position="stacked">Correo Electrónico</ion-label>
+          <ion-input
+            #correoInput
+            [(ngModel)]="correo"
+            (ngModelChange)="onFieldChange('correo')"
+            type="email"
+            placeholder="tu@email.com"
+            inputmode="email"
+            autocomplete="email"
+            autocapitalize="off"
+            enterkeyhint="next"
+          ></ion-input>
+        </ion-item>
+        <div class="field-error" *ngIf="fieldErrors.correo" role="alert" aria-live="polite">
+          <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+          <span>{{ fieldErrors.correo }}</span>
+        </div>
+        <div class="field-help" *ngIf="isCheckingEmail" aria-live="polite">
+          <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+          <span>Validando disponibilidad del correo...</span>
+        </div>
+
+        <ion-item lines="none" class="field">
+          <ion-icon name="shield-checkmark" slot="start"></ion-icon>
+          <ion-label position="stacked">Rol</ion-label>
+          <ion-select [(ngModel)]="role" interface="popover">
+            <ion-select-option value="operaciones">Operaciones</ion-select-option>
+            <ion-select-option value="tecnico">Técnico</ion-select-option>
+            <ion-select-option value="seguridad">Seguridad</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="none" class="field">
+          <ion-icon name="lock-closed" slot="start"></ion-icon>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input
+            #claveInput
+            [(ngModel)]="clave"
+            (ngModelChange)="onFieldChange('clave')"
+            type="password"
+            placeholder="Mínimo 8 caracteres"
+            autocomplete="new-password"
+            enterkeyhint="next"
+          ></ion-input>
+        </ion-item>
+        <div class="field-error" *ngIf="fieldErrors.clave" role="alert" aria-live="polite">
+          <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+          <span>{{ fieldErrors.clave }}</span>
+        </div>
+
+        <ion-item lines="none" class="field">
+          <ion-icon name="lock-closed" slot="start"></ion-icon>
+          <ion-label position="stacked">Confirmar Contraseña</ion-label>
+          <ion-input
+            #confirmarClaveInput
+            [(ngModel)]="confirmarClave"
+            (ngModelChange)="onFieldChange('confirmarClave')"
+            type="password"
+            placeholder="Repite tu contraseña"
+            autocomplete="new-password"
+            enterkeyhint="done"
+            (keyup.enter)="createAccount()"
+          ></ion-input>
+        </ion-item>
+        <div class="field-error" *ngIf="fieldErrors.confirmarClave" role="alert" aria-live="polite">
+          <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+          <span>{{ fieldErrors.confirmarClave }}</span>
+        </div>
+
+        <ion-button expand="block" class="btn-primary btn-register" (click)="createAccount()">
+          <ion-icon slot="start" name="checkmark-circle"></ion-icon>
+          CREAR CUENTA
+        </ion-button>
+
+        <div class="links">
+          <a (click)="backToLogin()">¿Ya tienes cuenta? Inicia sesión</a>
+        </div>
+
+        <div class="error" *ngIf="errorMsg" role="alert" aria-live="assertive">
+          <ion-icon name="warning-outline" aria-hidden="true"></ion-icon>
+          {{ errorMsg }}
+        </div>
+
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+</ion-content>
